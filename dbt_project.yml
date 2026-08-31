@@ -1,0 +1,34 @@
+name: 'eth'
+version: '1.0.0'
+
+profile: 'eth'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"] 
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:         
+  - "target"
+  - "dbt_packages"
+
+flags:
+  fail_fast : true
+
+seeds:
+  +database: seeds
+  +schema: static
+
+models:
+  eth:
+    +materialized: table
+    +tags: ['eth','crypto']
+    marts :
+      +schema : marts
+
+vars:
+  token_name_var: 'link'
+  token_address_var: '0x514910771af9ca656af840dff83e8264ecf986ca'
+  token_decimals_var: '18'
