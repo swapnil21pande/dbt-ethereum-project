@@ -18,4 +18,3 @@ sum( {{column_name }}/power(10, {{ factor}} ) )
 {% endmacro %}
 
 
-{# fgrgg#ab #}

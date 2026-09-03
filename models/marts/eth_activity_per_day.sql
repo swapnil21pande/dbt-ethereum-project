@@ -11,4 +11,3 @@ group by
 date,
 transaction_category
 
-{{ random_macro() }}

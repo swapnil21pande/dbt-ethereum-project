@@ -1,22 +1,22 @@
-{{ config(materialized='table', tags = ['daily'])}}
+{{ config(tags=['stablecoin'], grants={'select': ['TESTER']}) }}
 
 select
-t.date,
-t.token_address,
-s.type,
-s.symbol,
-{{ conversion('t.value', 's.decimals')}} as total_usd_value
+    t.date,
+    t.token_address,
+    s.type,
+    s.symbol,
+    sum(t.value * 8) as total_usd_value
+ {# {{ conversion('t.value', 's.decimals') }} as total_usd_value (check why this is failing) #}
 
-from {{ ref('stg_token_transfer')}} t 
+from {{ ref('stg_token_transfer') }} t
 
-left join {{ ref('stablecoins')}} s
-on t.token_address = s.contract_address
+left join {{ ref('stablecoins') }} s
+    on t.token_address = s.contract_address
 
 where s.contract_address is not null
 
-group by 
-t.date,
-t.token_address,
-s.type,
-s.symbol
-
+group by
+    t.date,
+    t.token_address,
+    s.type,
+    s.symbol

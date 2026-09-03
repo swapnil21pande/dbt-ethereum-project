@@ -7,5 +7,5 @@ sources:
 
     tables:
       - name: contracts
-      - name: token_transfers
+      - name: token_transfer
       - name: transactions

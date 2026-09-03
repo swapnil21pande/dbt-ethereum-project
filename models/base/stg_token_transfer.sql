@@ -4,4 +4,4 @@ date,
 token_address,
 value
 
-from {{ source('eth_src','token_transfers')}} 
+from {{ source('eth_src','token_transfer')}} 

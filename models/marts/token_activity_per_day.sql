@@ -2,7 +2,7 @@
 {{ config(tags=['token'], alias=var('token_name_var')~'_activity_per_day' )}}
 
 select
-t.date,l
+t.date,
 t.token_address,
 {{ conversion('t.value', var('token_decimals_var')) }} as total_value
 
