@@ -34,6 +34,7 @@ models:
           - GRANT USAGE ON DATABASE DBT TO ROLE TESTER;
           - GRANT USAGE ON SCHEMA DBT.DBT_SWAPNIL TO ROLE TESTER;
           - GRANT SELECT ON TABLE DBT.DBT_SWAPNIL.stablecoin_activity_per_day TO ROLE TESTER;
+          - "{{ create_latest_version_view() }}"
 
 vars:
   token_name_var: 'link'

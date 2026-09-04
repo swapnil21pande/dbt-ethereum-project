@@ -11,3 +11,4 @@ def model(dbt, session):
     my_sql_model_df = my_sql_model_df.to_pandas()
     my_sql_model_df["is_holiday"] = my_sql_model_df["DATE"].apply(is_holiday)
     return my_sql_model_df
+
