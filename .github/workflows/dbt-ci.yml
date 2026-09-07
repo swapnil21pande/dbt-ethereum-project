@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  dbt-run:
+  dbt-run: 
     runs-on: ubuntu-latest
     environment: DBT_ETH
 
