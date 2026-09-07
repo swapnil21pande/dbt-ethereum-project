@@ -1,7 +1,7 @@
 eth:
   outputs:
     ci:
-      account: YOUR-SNOWFLAKE-APP-IDENTIFIER
+      account: MJLBCSA-FJ82913
       database: CI
       private_key_path: "{{ env_var('DBT_PRIVATE_KEY_PATH') }}"
       role: ACCOUNTADMIN
