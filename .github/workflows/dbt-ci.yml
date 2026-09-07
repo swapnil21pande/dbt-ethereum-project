@@ -32,8 +32,15 @@ jobs:
         run: |
           mkdir -p ~/.dbt
           cp .dbt/profiles.yml ~/.dbt/profiles.yml
-          echo "$DBT_PRIVATE_KEY" > ~/.dbt/rsa_key.p8
+          printf '%s\n' "$DBT_PRIVATE_KEY" > ~/.dbt/rsa_key.p8
           chmod 600 ~/.dbt/rsa_key.p8
+
+      - name: Validate private key format
+        run: |
+          # confirms PEM framing/line-count without ever printing key material
+          wc -l ~/.dbt/rsa_key.p8
+          openssl pkey -in ~/.dbt/rsa_key.p8 -pubout -out /tmp/pub.pem
+          echo "Key parsed OK"
 
       - name: Install dbt deps
         run: dbt deps
